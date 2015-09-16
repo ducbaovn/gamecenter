@@ -1,0 +1,103 @@
+<div id="main" data-ng-app="ChatRoom">
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Chat Wolrd!</h1>
+      <p>You have touched a great deal!</p>
+      
+    </div>
+  </div>
+    <div class="container" data-ng-controller="ChatRoomCtrl">
+      <div class="alert alert-warning alert-dismissible" role="alert" ng-show="flash.shown">
+        {{flash.message}}
+      </div>
+
+      <div class="row" >
+        <div class="col-lg-12">
+          <user-panel> </user-panel>
+          <online-panel></online-panel>
+          <room-panel></room-panel>
+        </div><!-- /.col-lg-6 -->
+      </div><!-- /.row -->      
+      <div class='row' ng-show="CurrentUser.authorized">
+        <div class="row">
+          <div class="col-md-6" ng-repeat="user in CurrentUser.peerUsers">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                  PRIVATE ROOM {{user.nickname}}
+                </div>
+                <div class="panel-body" style="height: 200px; overflow-y: scroll;">
+                  <ul class="list-unstyled">
+                    <li ng-repeat="chat in user.chat" class="">
+                      <div class="text-right" ng-if="chat.sender.id===CurrentUser.id">
+                        {{chat.message}}
+                        <span class='badgle'>ME</span>
+                      </div>
+                      <div class="text-left" ng-if="chat.sender.id!==CurrentUser.id">
+                        <span class='badgle'>{{chat.sender.nickname}}</span>
+                        {{chat.message}}
+                      </div>
+                    </li>
+                  </ul>
+                  
+                </div>
+                <!-- end panel body -->
+              <div class="panel-footer">
+                <div class="input-group">
+                  <input type="text" class="form-control" ng-model="pmessage" ng-enter="sendMessageRoom(user, pmessage)">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="peerChat(user, pmessage)">SEND</button>
+                  </span>
+                </div><!-- /input-group -->
+
+              </div>                
+            </div>     
+
+          </div>
+        </div>
+        <div class="row">
+          <div class='col-md-12' ng-repeat="room in CurrentUser.openRooms">
+
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                ROOM: {{room.name}}
+                <button type="button" class="close"  ng-click="leaveRoom(room)" title="Leave this room"><span aria-hidden="true">&times;</span><span class="sr-only">LEAVE</span></button>
+              </div>
+              <div class="panel-body" style="height: 200px; overflow-y: scroll;">
+                <div class="col-md-3">
+                  <ul class="list-unstyled">
+                    <li ng-repeat="usr in room.onlines">
+                      <span class='label label-success'>{{usr.nickname}}</span>
+                    </li>
+                  </ul>
+                </div>
+                <div class='col-md-9'>
+                  <ul class="list-unstyled">
+                    <li ng-repeat="chat in room.chat" class="">
+                      <div class="text-right" ng-if="chat.sender.id===CurrentUser.id">
+                        {{chat.message}}
+                        <span class='badgle'>ME</span>
+                      </div>
+                      <div class="text-left" ng-if="chat.sender.id!==CurrentUser.id">
+                        <span class='badgle'>{{chat.sender.nickname}}</span>
+                        {{chat.message}}
+                      </div>
+                    </li>
+                  </ul>
+                  </div>
+              </div>
+              <div class="panel-footer">
+                <div class="input-group">
+                  <input type="text" class="form-control" ng-model="message" ng-enter="sendMessageRoom(message, room)">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" ng-click="sendMessageRoom(message, room)">SEND</button>
+                  </span>
+                </div><!-- /input-group -->
+
+              </div>
+            </div>          
+
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

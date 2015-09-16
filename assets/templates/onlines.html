@@ -1,0 +1,13 @@
+<div ng-if="CurrentUser.authorized">
+  <ul class="list-group col-md-3">
+    <li href="#" class="list-group-item active">
+      {{CurrentUser.users.length}} Online
+    </li>
+    <li class="list-group-item" ng-repeat="user in CurrentUser.users">
+      {{user.fullname}}
+
+      <a class="btn pull-right" ng-click="openPeerChat(user)" ng-if="user.id !== CurrentUser.id">CHAT</a>
+    </li>    
+  </ul>  
+</div>
+

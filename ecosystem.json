@@ -1,0 +1,45 @@
+{
+  "apps" : [
+    {
+      "name"      : "API-GC",
+      "instances" : 1,
+      "script"    : "app.js",
+      "error_file" : "./logs/api-gc-error.log",
+      "out_file"   : "./logs/api-gc-out.log",      
+      "env": {
+        "args"      : "--dev",
+        "COMMON_VARIABLE": "true"
+      },
+      "env_production" : {
+        "args"      : "--prod",
+        "COMMON_VARIABLE": "true"
+      }
+    }
+  ],
+  "deploy" : {
+    "staging" : {
+      "user" : "monitor",
+      "host" : "103.19.220.139",
+      "ref"  : "origin/master",
+      "repo" : "git@bitbucket.org:paulelol/gc.git",
+      "path" : "/var/www/SmartCenter/gc",
+      "post-deploy" : "pm2 startOrRestart ecosystem.json -x --env production"
+    },
+    "production" : {
+      "user" : "monitor",
+      "host" : "103.19.220.140",
+      "ref"  : "origin/master",
+      "repo" : "git@bitbucket.org:paulelol/gc.git",
+      "path" : "/var/www/SmartCenter/gc",
+      "post-deploy" : "pm2 startOrRestart ecosystem.json -x --env production"
+    },
+    "dev" : {
+      "user" : "node",
+      "host" : "212.83.163.1",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:repo.git",
+      "path" : "/var/www/development",
+      "post-deploy" : "pm2 startOrRestart ecosystem.json -x --env development"
+    }
+  }
+}

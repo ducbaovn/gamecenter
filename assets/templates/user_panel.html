@@ -1,0 +1,10 @@
+<div data-ng-hide="CurrentUser.authorized">
+  <input type="text" class="form-control" placeholder="Enter your auth token" ng-model="CurrentUser.token">
+  <span class="input-group-btn">
+    <button class="btn btn-default" type="button" id="submitToken" data-ng-click="loginWithToken()">AUTHORIZE!</button>
+  </span>
+  <span >{{CurrentUser.token}}</span>
+</div>
+<div data-ng-show="CurrentUser.authorized">
+  Welcome {{CurrentUser.fullname}}
+</div>

@@ -1,0 +1,23 @@
+{
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "bootstrap": "~3.3.0",
+    "font-awesome": "~4.2.0",
+    "socket.io-client": "~0.9.17",
+    "angular-bootstrap": "~0.11.2",
+    "angular-sails": "~1.0.4",
+    "angular-socket-io": "~0.6.0",
+    "angular-moment": "~0.8.2"
+  },
+  "name": "GameCenter",
+  "version": "0.0.0",
+  "author": "TinLe",
+  "private": true
+}

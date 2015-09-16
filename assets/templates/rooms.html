@@ -1,0 +1,12 @@
+<div ng-if="CurrentUser.authorized">
+  <ul class="list-group col-md-3">
+    <li href="#" class="list-group-item active">
+      {{CurrentUser.rooms.length}} Rooms
+    </li>
+    <li class="list-group-item" ng-repeat="room in CurrentUser.rooms">
+      {{room.name}}
+      <a href="" class="badge" data-ng-click="join(room)">JOIN</a>
+    </li>    
+  </div>  
+</div>
+

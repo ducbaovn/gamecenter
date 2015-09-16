@@ -1,0 +1,12 @@
+{
+	"Welcome": "Welcome",
+  "me": "hello me",
+	"A brand new app.": "A brand new app.",
+  "math": {
+    "not_found_challenge": "không tìm thấy thách thức yêu cầu",
+    "invalid_challenge": "thách thức yêu không hợp lệ",
+    "unavailable_challenge": "hiện tại không thể chấp nhận thách thức",
+    "not_enough_money": "tài khoản của bạn không đủ tiền để thực hiện thao tác",
+    "not_charge_star": "không thể tìm thấy sao trong tài khoản của bạn"
+  }
+}

@@ -1,0 +1,4 @@
+{
+    portrait:{version:9, url:"http://103.19.220.139/apk/gc/htmlPort.zip"},
+    landscape:{version:1, url:"http://103.19.220.139/apk/gc/htmlLand.zip"}
+}
